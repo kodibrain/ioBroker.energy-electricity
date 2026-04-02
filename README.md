@@ -1,4 +1,4 @@
-![Logo](admin/energygas.png)
+![Logo](admin/energyelectric.png)
 # ioBroker.energy-electricity
 
 ## Funktionen
