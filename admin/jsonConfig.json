@@ -166,7 +166,7 @@
     },
     "tariffTab": {
       "type": "panel",
-      "label": "Consumption tariffs",
+      "label": "Tariffs",
       "items": {
         "headlineTariff1": {
           "type": "header",
