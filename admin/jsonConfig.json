@@ -170,7 +170,7 @@
       "items": {
         "headlineTariff1": {
           "type": "header",
-          "text": "Tariffs",
+          "text": "Consumption tariffs",
           "size": 2,
           "newLine": true
         },
