@@ -1,0 +1,398 @@
+{
+  "i18n": true,
+  "type": "tabs",
+  "items": {
+    "mainTab": {
+      "type": "panel",
+      "label": "General",
+      "items": {
+        "headlineGeneral1": {
+          "type": "header",
+          "text": "Source",
+          "size": 2,
+          "newLine": true
+        },
+        "sourceType": {
+          "type": "select",
+          "label": "Input type",
+          "options": [
+            {
+              "label": "Consumption meter + feed-in meter",
+              "value": "dual_meter"
+            },
+            {
+              "label": "Consumption meter only",
+              "value": "meter"
+            },
+            {
+              "label": "Counter (consumption only)",
+              "value": "counter"
+            }
+          ],
+          "xs": 12,
+          "sm": 6,
+          "md": 6,
+          "lg": 6,
+          "xl": 6
+        },
+        "consumptionState": {
+          "type": "objectId",
+          "label": "Consumption meter data point",
+          "hidden": "data.sourceType === 'counter'",
+          "xs": 12,
+          "sm": 12,
+          "md": 12,
+          "lg": 12,
+          "xl": 12
+        },
+        "feedInState": {
+          "type": "objectId",
+          "label": "Feed-in meter data point",
+          "hidden": "data.sourceType !== 'dual_meter'",
+          "xs": 12,
+          "sm": 12,
+          "md": 12,
+          "lg": 12,
+          "xl": 12
+        },
+        "counterState": {
+          "type": "objectId",
+          "label": "Counter data point",
+          "hidden": "data.sourceType !== 'counter'",
+          "xs": 12,
+          "sm": 12,
+          "md": 12,
+          "lg": 12,
+          "xl": 12
+        },
+        "counterFactor": {
+          "type": "text",
+          "label": "Counter factor",
+          "help": "Value per counter step in kWh. Comma or dot is allowed, e.g. 1 or 0.01",
+          "hidden": "data.sourceType !== 'counter'",
+          "xs": 12,
+          "sm": 6,
+          "md": 6,
+          "lg": 6,
+          "xl": 6
+        },
+        "counterType": {
+          "type": "select",
+          "label": "Counter type",
+          "options": [
+            {
+              "label": "Detect automatically",
+              "value": "auto"
+            },
+            {
+              "label": "Numeric",
+              "value": "numeric"
+            },
+            {
+              "label": "Boolean (pulse)",
+              "value": "boolean"
+            }
+          ],
+          "hidden": "data.sourceType !== 'counter'",
+          "xs": 12,
+          "sm": 6,
+          "md": 6,
+          "lg": 6,
+          "xl": 6
+        },
+        "counterDebounceMs": {
+          "type": "number",
+          "label": "Debounce time (ms)",
+          "help": "Only relevant for boolean pulses. Suppresses multiple counts caused by bouncing.",
+          "hidden": "data.sourceType !== 'counter'",
+          "xs": 12,
+          "sm": 6,
+          "md": 6,
+          "lg": 6,
+          "xl": 6,
+          "min": 0
+        },
+        "counterHint": {
+          "type": "staticText",
+          "text": "In counter mode, only consumption is calculated. Feed-in is set to 0.",
+          "hidden": "data.sourceType !== 'counter'",
+          "newLine": true,
+          "xs": 12,
+          "sm": 6,
+          "md": 6,
+          "lg": 6,
+          "xl": 6
+        },
+        "headlineGeneral3": {
+          "type": "header",
+          "text": "Update",
+          "size": 2,
+          "newLine": true
+        },
+        "updateMode": {
+          "type": "select",
+          "label": "Update mode",
+          "options": [
+            {
+              "label": "On meter reading change",
+              "value": "change"
+            },
+            {
+              "label": "By time interval",
+              "value": "interval"
+            },
+            {
+              "label": "Both",
+              "value": "both"
+            }
+          ],
+          "xs": 12,
+          "sm": 6,
+          "md": 6,
+          "lg": 6,
+          "xl": 6
+        },
+        "updateIntervalSeconds": {
+          "type": "number",
+          "label": "Interval in seconds",
+          "min": 1,
+          "xs": 12,
+          "sm": 6,
+          "md": 6,
+          "lg": 6,
+          "xl": 6
+        }
+      }
+    },
+    "tariffTab": {
+      "type": "panel",
+      "label": "Tariffs",
+      "items": {
+        "headlineTariff1": {
+          "type": "header",
+          "text": "Tariffs",
+          "size": 2,
+          "newLine": true
+        },
+        "tariffHint": {
+          "type": "staticText",
+          "text": "At least one active consumption tariff is required. With dual meters, at least one active feed-in tariff is also required. Consumption and feed-in can use different start dates and monthly payments. For feed-in tariffs, the EEG remuneration can optionally be calculated automatically from commissioning date, feed-in type, and installed capacity; the manual remuneration is used as a fallback.",
+          "newLine": true,
+          "xs": 12,
+          "sm": 6,
+          "md": 6,
+          "lg": 6,
+          "xl": 6
+        },
+        "autoCreateNextTariffAfterOneYear": {
+          "type": "checkbox",
+          "label": "Manage tariffs automatically",
+          "help": "Creates follow-up tariffs automatically or sets the current meter readings as start values on the day of the tariff change.",
+          "xs": 12,
+          "sm": 12,
+          "md": 12,
+          "lg": 12,
+          "xl": 12
+        },
+        "tariffs": {
+          "type": "table",
+          "label": "Consumption tariffs",
+          "xs": 12,
+          "sm": 12,
+          "md": 12,
+          "lg": 12,
+          "xl": 12,
+          "import": true,
+          "export": true,
+          "items": [
+            {
+              "type": "checkbox",
+              "attr": "aktiv",
+              "title": "Active",
+              "width": "80px"
+            },
+            {
+              "type": "text",
+              "attr": "name",
+              "title": "Name",
+              "width": "140px",
+              "placeholder": "Provider"
+            },
+            {
+              "type": "text",
+              "attr": "startdatum",
+              "title": "Start date",
+              "width": "130px",
+              "placeholder": "YYYY-MM-DD"
+            },
+            {
+              "type": "text",
+              "attr": "startzaehlerstand_bezug",
+              "title": "Consumption meter reading",
+              "width": "140px",
+              "placeholder": "12345,678"
+            },
+            {
+              "type": "text",
+              "attr": "grundgebuehr",
+              "title": "Base fee/month €",
+              "width": "150px",
+              "placeholder": "15,99"
+            },
+            {
+              "type": "text",
+              "attr": "arbeitspreis",
+              "title": "Consumption price/kWh €",
+              "width": "150px",
+              "placeholder": "0,2981"
+            },
+            {
+              "type": "text",
+              "attr": "abschlag",
+              "title": "Monthly payment €",
+              "width": "130px",
+              "placeholder": "105,44"
+            },
+            {
+              "type": "number",
+              "attr": "abschlagTag",
+              "title": "Monthly payment day",
+              "width": "110px",
+              "placeholder": "15"
+            }
+          ]
+        },
+        "headlineFeedInTariff": {
+          "type": "header",
+          "text": "Feed-in tariffs",
+          "size": 2,
+          "newLine": true
+        },
+        "feedInTariffHint": {
+          "type": "staticText",
+          "text": "For feed-in, you can maintain a separate tariff table with a different start date. Optionally, a monthly payment from the grid operator can be stored to show whether credit is still open or too much has been paid.",
+          "newLine": true,
+          "xs": 12,
+          "sm": 6,
+          "md": 6,
+          "lg": 6,
+          "xl": 6
+        },
+        "feedInTariffs": {
+          "type": "table",
+          "label": "Feed-in tariffs",
+          "xs": 12,
+          "sm": 12,
+          "md": 12,
+          "lg": 12,
+          "xl": 12,
+          "import": true,
+          "export": true,
+          "items": [
+            {
+              "type": "checkbox",
+              "attr": "aktiv",
+              "title": "Active",
+              "width": "80px"
+            },
+            {
+              "type": "text",
+              "attr": "name",
+              "title": "Name",
+              "width": "140px",
+              "placeholder": "Netzbetreiber"
+            },
+            {
+              "type": "text",
+              "attr": "startdatum",
+              "title": "Start date",
+              "width": "130px",
+              "placeholder": "YYYY-MM-DD"
+            },
+            {
+              "type": "text",
+              "attr": "startzaehlerstand_einspeisung",
+              "title": "Feed-in meter reading",
+              "width": "160px",
+              "placeholder": "5432,100"
+            },
+            {
+              "type": "checkbox",
+              "attr": "eegAutomatik",
+              "title": "EEG Auto",
+              "width": "90px"
+            },
+            {
+              "type": "text",
+              "attr": "eegInbetriebnahme",
+              "title": "Commissioning date",
+              "width": "130px",
+              "placeholder": "YYYY-MM-DD"
+            },
+            {
+              "type": "select",
+              "attr": "eegEinspeiseart",
+              "title": "Feed-in type",
+              "width": "140px",
+              "options": [
+                {
+                  "label": "Surplus",
+                  "value": "surplus"
+                },
+                {
+                  "label": "Full feed-in",
+                  "value": "full"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "attr": "eegAnlagenart",
+              "title": "Installation type",
+              "width": "130px",
+              "options": [
+                {
+                  "label": "Building",
+                  "value": "building"
+                },
+                {
+                  "label": "Other",
+                  "value": "other"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "attr": "eegAnlagenleistung",
+              "title": "Leistung kWp",
+              "width": "120px",
+              "placeholder": "12,5"
+            },
+            {
+              "type": "text",
+              "attr": "einspeiseverguetung",
+              "title": "Manual remuneration/kWh €",
+              "width": "180px",
+              "placeholder": "0,0820"
+            },
+            {
+              "type": "text",
+              "attr": "abschlag",
+              "title": "Monthly payment €",
+              "width": "160px",
+              "placeholder": "75,00"
+            },
+            {
+              "type": "number",
+              "attr": "abschlagTag",
+              "title": "Payment day",
+              "width": "120px",
+              "min": 1,
+              "max": 31
+            }
+          ]
+        }
+      }
+    }
+  }
+}

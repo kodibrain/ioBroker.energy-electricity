@@ -1,0 +1,134 @@
+{
+  "common": {
+    "name": "energy-electricity",
+    "version": "0.0.9",
+    "news": {
+      "0.0.2": {
+        "en": "Hardened tariff start meter logic for consumption and feed-in, improved counter correction handling",
+        "de": "Startzählerstand-Logik für Bezug und Einspeisung robuster gemacht, Counter-Korrektur verbessert",
+        "ru": "Улучшена логика стартовых показаний тарифа для потребления и подачи, улучшена коррекция счетчика",
+        "pt": "Lógica de leituras iniciais da tarifa para consumo e injeção reforçada, correção de contador melhorada",
+        "nl": "Logica voor startmeterstanden van tarief voor verbruik en teruglevering verbeterd, tellercorrectie verbeterd",
+        "fr": "Logique des index de départ du tarif pour consommation et injection renforcée, correction du compteur améliorée",
+        "it": "Logica dei contatori iniziali della tariffa per consumo e immissione migliorata, correzione del contatore migliorata",
+        "es": "Lógica de lecturas iniciales de tarifa para consumo e inyección reforzada, corrección del contador mejorada",
+        "pl": "Usprawniono logikę początkowych stanów licznika taryfy dla poboru i oddawania oraz korektę licznika",
+        "uk": "Покращено логіку стартових показників тарифу для споживання та віддачі, покращено корекцію лічильника",
+        "zh-cn": "增强了用电和馈电的费率起始读数逻辑，并改进了计数器校正"
+      },
+      "0.0.1": {
+        "en": "initial release",
+        "de": "initial release",
+        "ru": "initial release",
+        "pt": "initial release",
+        "nl": "initial release",
+        "fr": "initial release",
+        "it": "initial release",
+        "es": "initial release",
+        "pl": "initial release",
+        "uk": "initial release",
+        "zh-cn": "initial release"
+      },
+      "0.0.5": {
+        "en": "Added separate feed-in tariff table with independent start date and optional monthly advance payments",
+        "de": "Separate Einspeise-Tariftabelle mit eigenem Startdatum und optionalen monatlichen Abschlägen hinzugefügt"
+      },
+      "0.0.6": {
+        "en": "Added optional automatic EEG feed-in remuneration based on commissioning date, feed-in type and installed system power",
+        "de": "Optionale automatische EEG-Einspeisevergütung anhand von Inbetriebnahme, Einspeiseart und Anlagenleistung hinzugefügt"
+      },
+      "0.0.7": {
+        "en": "Added feedin.eeg_auto_active state and switched states, logs, and admin labels to English",
+        "de": "State feedin.eeg_auto_active hinzugefügt und States, Logs sowie Admin-Beschriftungen auf Englisch umgestellt"
+      }
+    },
+    "titleLang": {
+      "en": "electricity consumption",
+      "de": "Stromverbrauch",
+      "ru": "потребление электроэнергии",
+      "pt": "consumo de eletricidade",
+      "nl": "stroomverbruik",
+      "fr": "consommation électrique",
+      "it": "consumo elettrico",
+      "es": "consumo eléctrico",
+      "pl": "zużycie energii elektrycznej",
+      "uk": "споживання електроенергії",
+      "zh-cn": "用电量"
+    },
+    "desc": {
+      "en": "electricity consumption",
+      "de": "Stromverbrauch",
+      "ru": "потребление электроэнергии",
+      "pt": "consumo de eletricidade",
+      "nl": "stroomverbruik",
+      "fr": "consommation électrique",
+      "it": "consumo elettrico",
+      "es": "consumo eléctrico",
+      "pl": "zużycie energii elektrycznej",
+      "uk": "споживання електроенергії",
+      "zh-cn": "用电量"
+    },
+    "authors": [
+      "kodibrain <gitkodibrain@gmail.com>"
+    ],
+    "keywords": [
+      "electricity",
+      "power",
+      "energy",
+      "consumption",
+      "feed-in",
+      "meter",
+      "counter",
+      "tariff",
+      "cost",
+      "revenue",
+      "billing"
+    ],
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "platform": "Javascript/Node.js",
+    "icon": "energyelectric.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/kodibrain/ioBroker.energy-electricity/main/admin/energyelectric.png",
+    "readme": "https://github.com/kodibrain/ioBroker.energy-electricity/blob/main/README.md",
+    "loglevel": "info",
+    "tier": 3,
+    "mode": "daemon",
+    "type": "metering",
+    "compact": true,
+    "connectionType": "local",
+    "dataSource": "push",
+    "adminUI": {
+      "config": "json"
+    },
+    "dependencies": [
+      {
+        "js-controller": ">=6.0.11"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=7.6.20"
+      }
+    ],
+    "installedFrom": "/opt/iobroker/Adapter/ioBroker.energy-electricity"
+  },
+  "native": {
+    "sourceType": "dual_meter",
+    "consumptionState": "",
+    "feedInState": "",
+    "counterState": "",
+    "counterFactor": "1",
+    "counterType": "auto",
+    "counterDebounceMs": 200,
+    "updateMode": "change",
+    "updateIntervalSeconds": 60,
+    "autoCreateNextTariffAfterOneYear": true,
+    "tariffs": [],
+    "feedInTariffs": []
+  },
+  "objects": [],
+  "instanceObjects": []
+}
